@@ -10,8 +10,8 @@
 
 
 # 基础配置
-PLATFORM = "xhs"
-KEYWORDS = "编程副业,编程兼职"  # 关键词搜索配置，以英文逗号分隔
+PLATFORM = "dy"
+KEYWORDS = "AI萌娃,靳东情感,亲爱的姐姐,茫茫人海遇到就是缘分,姐姐弟弟好想你,情感共鸣"  # 关键词搜索配置，以英文逗号分隔
 LOGIN_TYPE = "qrcode"  # qrcode or phone or cookie
 COOKIES = ""
 # 具体值参见media_platform.xxx.field下的枚举值，暂时只支持小红书
@@ -22,7 +22,7 @@ CRAWLER_TYPE = (
     "search"  # 爬取类型，search(关键词搜索) | detail(帖子详情)| creator(创作者主页数据)
 )
 # 自定义User Agent（暂时仅对XHS有效）
-UA = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36 Edg/131.0.0.0'
+UA = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36 Edg/131.0.0.0"
 
 # 是否开启 IP 代理
 ENABLE_IP_PROXY = False
@@ -67,11 +67,14 @@ ENABLE_GET_IMAGES = False
 ENABLE_GET_COMMENTS = True
 
 # 爬取一级评论的数量控制(单视频/帖子)
-CRAWLER_MAX_COMMENTS_COUNT_SINGLENOTES = 10
+CRAWLER_MAX_COMMENTS_COUNT_SINGLENOTES = 100
 
 # 是否开启爬二级评论模式, 默认不开启爬二级评论
 # 老版本项目使用了 db, 则需参考 schema/tables.sql line 287 增加表字段
 ENABLE_GET_SUB_COMMENTS = False
+
+# 二维码登录超时时间，单位毫秒，默认120秒
+QRCODE_LOGIN_TIMEOUT = 120000
 
 # 已废弃⚠️⚠️⚠️指定小红书需要爬虫的笔记ID列表
 # 已废弃⚠️⚠️⚠️ 指定笔记ID笔记列表会因为缺少xsec_token和xsec_source参数导致爬取失败
@@ -163,9 +166,9 @@ ZHIHU_CREATOR_URL_LIST = [
 
 # 指定知乎需要爬取的帖子ID列表
 ZHIHU_SPECIFIED_ID_LIST = [
-    "https://www.zhihu.com/question/826896610/answer/4885821440", # 回答
-    "https://zhuanlan.zhihu.com/p/673461588", # 文章
-    "https://www.zhihu.com/zvideo/1539542068422144000" # 视频
+    "https://www.zhihu.com/question/826896610/answer/4885821440",  # 回答
+    "https://zhuanlan.zhihu.com/p/673461588",  # 文章
+    "https://www.zhihu.com/zvideo/1539542068422144000",  # 视频
 ]
 
 # 词云相关
@@ -174,7 +177,7 @@ ENABLE_GET_WORDCLOUD = False
 # 自定义词语及其分组
 # 添加规则：xx:yy 其中xx为自定义添加的词组，yy为将xx该词组分到的组名。
 CUSTOM_WORDS = {
-    "零几": "年份",  # 将“零几”识别为一个整体
+    "零几": "年份",  # 将"零几"识别为一个整体
     "高频词": "专业术语",  # 示例自定义词
 }
 
@@ -185,10 +188,10 @@ STOP_WORDS_FILE = "./docs/hit_stopwords.txt"
 FONT_PATH = "./docs/STZHONGS.TTF"
 
 # 爬取开始的天数，仅支持 bilibili 关键字搜索，YYYY-MM-DD 格式，若为 None 则表示不设置时间范围，按照默认关键字最多返回 1000 条视频的结果处理
-START_DAY = '2024-01-01'
+START_DAY = "2024-01-01"
 
 # 爬取结束的天数，仅支持 bilibili 关键字搜索，YYYY-MM-DD 格式，若为 None 则表示不设置时间范围，按照默认关键字最多返回 1000 条视频的结果处理
-END_DAY = '2024-01-01'
+END_DAY = "2024-01-01"
 
 # 是否开启按每一天进行爬取的选项，仅支持 bilibili 关键字搜索
 # 若为 False，则忽略 START_DAY 与 END_DAY 设置的值
